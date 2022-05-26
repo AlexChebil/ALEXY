@@ -3,19 +3,14 @@ import "./Header.scss";
 import TextField from "@mui/material/TextField";
 
 function Header() {
-  const first = useRef();
+  const searchInputRef = useRef();
 
-  function aa(e) {
-    /*  event.addEventListener(
-         if (condition) {
-             
-         } 
-      )
-    if (event.keyCode === 13) {
-      console.log("prop.current.value");
-    } */
-    // WILL ADD EVENT LISTENER LATER
-  }
+  /* Listening for the enter key to be pressed. */
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      searchInputRef.current && console.log(searchInputRef.current.value);
+    }
+  });
 
   return (
     <>
@@ -24,13 +19,11 @@ function Header() {
 
         <div className='search'>
           <TextField
-            inputRef={first}
+            inputRef={searchInputRef}
             id='outlined-basic'
-            label='Movies'
+            label='Search Movies'
             variant='outlined'
-            onClick={(event) => aa(event)}
           />
-          <button onClick={() => aa(first)}>Search</button>
         </div>
       </div>
     </>
