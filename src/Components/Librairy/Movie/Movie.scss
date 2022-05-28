@@ -1,16 +1,48 @@
 .movie{
-    background-color: lightblue;
+    background-color: rgba(72, 130, 224, 0.05);
+    color: wheat;
     padding: 2em;
     margin: 2em;
-    text-align: center;
+    border-radius: 2em;
+    transition: all .25s ease-in-out;
     
     img{
         width: 20em;
         display: block;
         margin-left: auto;
-        margin-right: auto  ;
+        margin-right: auto ;
+        border-radius: 2em;
+        border: 3px solid orange;
     }
-    h3{
-        text-align: left;
+    
+    p{
+        font-size: 1.25em;
     }
+
+}
+
+
+.movieTitleVoteDate{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.date{
+    font-style: italic;
+    font-weight: 1;
+    font-size: 1.5em;
+}
+
+.vote{
+    font-size: 2.5em;
+}
+
+#overview{
+    text-align: center;
+}
+
+.movie:hover{
+    transition:all .5s ease-in-out;
+    box-shadow: 0 0 5px 5px orange;
 }

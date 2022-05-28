@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./Library.scss";
 import Movie from "./Movie/Movie";
+import "./Library.scss";
 
 function Library() {
   const [movies, setMovies] = useState();
@@ -13,7 +13,7 @@ function Library() {
     const rawData = await fetch(REQUEST);
     const data = await rawData.json();
     setMovies(data);
-    console.log(movies);
+    console.log(movies.results);
   }
   useEffect(() => {
     getMovies();
@@ -21,6 +21,13 @@ function Library() {
 
   return (
     <>
+      <select name='a' id=''>
+        <option value='rating'>Rating</option>
+        <option value='name'>Name</option>
+      </select>
+      {/*
+      // replace it with MUI */}
+
       <div className='movies'>
         {movies &&
           movies.results.map((movie, index) => (
