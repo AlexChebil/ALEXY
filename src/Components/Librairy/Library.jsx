@@ -4,7 +4,7 @@ import "./Library.scss";
 
 function Library() {
   const [movies, setMovies] = useState();
-  const [sortBy, setSortBy] = useState();
+  const [sortBy, setSortBy] = useState("");
 
   const API_KEY = "7d92cb02e1baca465546cf38e2de00f0";
   const BASE_URL = "https://api.themoviedb.org/3";
@@ -13,8 +13,7 @@ function Library() {
   async function getMovies() {
     const rawData = await fetch(REQUEST);
     const data = await rawData.json();
-    setMovies(data);
-    // console.log(movies.results);
+    setMovies(data.results);
   }
   useEffect(() => {
     getMovies();
@@ -22,13 +21,15 @@ function Library() {
 
   switch (true) {
     case sortBy === "rating":
-      var a = movies.results.filter((entry) => entry.title === "Morbius");
+      //const a = movies.filter((entry) => entry.title === "Morbius");
+
       break;
 
     case sortBy === "release":
       console.log("release");
       break;
     default:
+      console.log("default");
       break;
   }
 
@@ -37,6 +38,7 @@ function Library() {
       <select
         name='sortMovies'
         id='sortMovies'
+        value={sortBy}
         onChange={(e) => setSortBy(e.target.value)}
       >
         <option value='rating'>Rating</option>
@@ -45,9 +47,7 @@ function Library() {
 
       <div className='movies'>
         {movies &&
-          movies.results.map((movie, index) => (
-            <Movie key={index} movie={movie} />
-          ))}
+          movies.map((movie, index) => <Movie key={index} movie={movie} />)}
       </div>
     </>
   );
