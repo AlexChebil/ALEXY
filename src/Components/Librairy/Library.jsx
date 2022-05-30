@@ -4,6 +4,7 @@ import "./Library.scss";
 
 function Library() {
   const [movies, setMovies] = useState();
+  const [sortBy, setSortBy] = useState();
 
   const API_KEY = "7d92cb02e1baca465546cf38e2de00f0";
   const BASE_URL = "https://api.themoviedb.org/3";
@@ -13,20 +14,34 @@ function Library() {
     const rawData = await fetch(REQUEST);
     const data = await rawData.json();
     setMovies(data);
-    console.log(movies.results);
+    // console.log(movies.results);
   }
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [sortBy]);
+
+  switch (true) {
+    case sortBy === "rating":
+      var a = movies.results.filter((entry) => entry.title === "Morbius");
+      break;
+
+    case sortBy === "release":
+      console.log("release");
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
-      <select name='a' id=''>
+      <select
+        name='sortMovies'
+        id='sortMovies'
+        onChange={(e) => setSortBy(e.target.value)}
+      >
         <option value='rating'>Rating</option>
-        <option value='name'>Name</option>
+        <option value='release'>Release</option>
       </select>
-      {/*
-      // replace it with MUI */}
 
       <div className='movies'>
         {movies &&
