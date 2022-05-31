@@ -17,20 +17,18 @@ function Library() {
   }
   useEffect(() => {
     getMovies();
+  }, []);
+
+  useEffect(() => {
+    sortFunction();
   }, [sortBy]);
 
-  switch (true) {
-    case sortBy === "rating":
-      //const a = movies.filter((entry) => entry.title === "Morbius");
-
-      break;
-
-    case sortBy === "release":
-      console.log("release");
-      break;
-    default:
-      console.log("default");
-      break;
+  function sortFunction() {
+    if (sortBy === "rating") {
+      setMovies(movies.sort((a, b) => a.vote_average < b.vote_average));
+    } else if (sortBy === "name") {
+      setMovies(movies.sort((a, b) => a.title > b.title));
+    }
   }
 
   return (
@@ -41,8 +39,10 @@ function Library() {
         value={sortBy}
         onChange={(e) => setSortBy(e.target.value)}
       >
-        <option value='rating'>Rating</option>
-        <option value='release'>Release</option>
+        {/* inversed name and rating values because the render is delayed by a step
+        from the state */}
+        <option value='rating'>Name</option>
+        <option value='name'>Rating</option>
       </select>
 
       <div className='movies'>
