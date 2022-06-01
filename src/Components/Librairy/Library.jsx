@@ -41,6 +41,17 @@ function Library({ searchValue }) {
     }
   });
 
+  async function getMoviesBySearch() {
+    if (searchMovie) {
+      const rawData = await fetch(SEARCH_REQUEST);
+      const data = await rawData.json();
+      setMovies(data.results);
+    }
+  }
+  useEffect(() => {
+    getMoviesBySearch();
+  }, [searchMovie]);
+
   return (
     <>
       <div className='flexContainer'>
