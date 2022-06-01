@@ -1,6 +1,42 @@
-.movies{
+.movies {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-           
+    //grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.selectDropdown {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1em;
+
+    select {
+        width: 17.5em;
+        border-radius: .5em;
+        padding: 1em;
+        border: none;
+        font-weight: bolder;
+        color: wheat;
+        background-color: rgba(137, 137, 137, 0.242);
+    }
+
+    select:hover {
+        background-color: white;
+        color: orange;
+    }
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .search {
+        margin: 1em;
+    }
+
+    #outlined-basic {
+        background-color: rgba(240, 248, 255, 0.05);
+        border-radius: .25em;
+        color: #ffa726;
+    }
 }
