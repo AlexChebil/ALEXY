@@ -3,7 +3,7 @@ import Movie from "./Movie/Movie";
 import "./Library.scss";
 import TextField from "@mui/material/TextField";
 
-function Library({ searchValue }) {
+function Library() {
   const inputRef = useRef();
   const [movies, setMovies] = useState();
   const [sortBy, setSortBy] = useState("");
@@ -46,6 +46,7 @@ function Library({ searchValue }) {
       const rawData = await fetch(SEARCH_REQUEST);
       const data = await rawData.json();
       setMovies(data.results);
+      console.log(movies);
     }
   }
   useEffect(() => {
@@ -86,6 +87,9 @@ function Library({ searchValue }) {
       <div className='movies'>
         {movies &&
           movies.map((movie, index) => <Movie key={index} movie={movie} />)}
+        {movies && movies.length === 0 ? (
+          <h1> Unfortunately This Movie Doesn't Exist.😕 </h1>
+        ) : null}
       </div>
     </>
   );

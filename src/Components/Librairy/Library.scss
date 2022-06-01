@@ -1,7 +1,12 @@
 .movies {
     display: grid;
-    //grid-template-columns: repeat(3, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+
+    h1 {
+        color: #ffa726;
+        text-align: center;
+        margin-top: 12.5%;
+    }
 }
 
 .selectDropdown {
