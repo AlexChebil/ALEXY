@@ -5,7 +5,7 @@ function Header() {
   return (
     <>
       <div className='header'>
-        <h1>ALEXY.</h1>
+        <h1 onClick={() => window.location.reload()}>ALEXY.</h1>
       </div>
     </>
   );

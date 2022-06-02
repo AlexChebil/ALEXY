@@ -2,22 +2,30 @@ import React, { useEffect, useRef, useState } from "react";
 import Movie from "./Movie/Movie";
 import "./Library.scss";
 import TextField from "@mui/material/TextField";
+import Genre from "./Genre/Genre";
 
 function Library() {
   const inputRef = useRef();
   const [movies, setMovies] = useState();
   const [sortBy, setSortBy] = useState("");
   const [searchMovie, setSearchMovie] = useState("");
+  const [movieID, setMovieID] = useState();
+  const [genre, setGenre] = useState();
+
+  //API ROUTES
 
   const API_KEY = "7d92cb02e1baca465546cf38e2de00f0";
   const BASE_URL = "https://api.themoviedb.org/3";
   const REQUEST = `${BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
   const SEARCH_REQUEST = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchMovie}`;
+  const SELECTED_MOVIE_REQUEST = `${BASE_URL}/movie/${movieID}?api_key=${API_KEY}`;
+  const SELECTED_GENRE_REQUEST = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`;
 
   async function getMovies() {
     const rawData = await fetch(REQUEST);
     const data = await rawData.json();
     setMovies(data.results);
+    console.log(movies);
   }
   useEffect(() => {
     getMovies();
@@ -89,6 +97,10 @@ function Library() {
             <option value='name'>Rating</option>
           </select>
         </div>
+      </div>
+
+      <div className='genre'>
+        <Genre />
       </div>
 
       <div className='movies'>

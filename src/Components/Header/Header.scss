@@ -1,8 +1,11 @@
-.header{
+.header {
     background-color: orange;
     padding: 1em;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
+    h1 {
+        cursor: pointer;
+    }
 }
