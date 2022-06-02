@@ -66,6 +66,13 @@ function Library() {
           />
         </div>
 
+        <div className='searchedFor'>
+          <h2> You Searched For :</h2>
+          {inputRef.current ? (
+            <h1>{inputRef.current.value.toUpperCase()} </h1>
+          ) : null}
+        </div>
+
         <div className='selectDropdown'>
           <select
             name='sortMovies'
