@@ -10,25 +10,33 @@ function Library() {
   const [sortBy, setSortBy] = useState("");
   const [searchMovie, setSearchMovie] = useState("");
   const [movieID, setMovieID] = useState();
-  const [genre, setGenre] = useState();
+  const [genres, setGenres] = useState();
 
   //API ROUTES
 
   const API_KEY = "7d92cb02e1baca465546cf38e2de00f0";
   const BASE_URL = "https://api.themoviedb.org/3";
+
   const REQUEST = `${BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
+  const GENRES_REQUEST = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
   const SEARCH_REQUEST = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchMovie}`;
   const SELECTED_MOVIE_REQUEST = `${BASE_URL}/movie/${movieID}?api_key=${API_KEY}`;
-  const SELECTED_GENRE_REQUEST = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`;
+  const SELECTED_GENRE_REQUEST = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genres}`;
 
   async function getMovies() {
     const rawData = await fetch(REQUEST);
     const data = await rawData.json();
     setMovies(data.results);
-    console.log(movies);
   }
+  async function getGenres() {
+    const rawData = await fetch(GENRES_REQUEST);
+    const data = await rawData.json();
+    setGenres(data.genres);
+  }
+
   useEffect(() => {
     getMovies();
+    getGenres();
   }, []);
 
   function sortFunction() {
@@ -98,17 +106,20 @@ function Library() {
           </select>
         </div>
       </div>
+      <div className='genreAndMovies'>
+        <div className='genre'>
+          <h1>Genres</h1>
+          {genres &&
+            genres.map((genre) => <Genre key={genre.id} genre={genre} />)}
+        </div>
 
-      <div className='genre'>
-        <Genre />
-      </div>
-
-      <div className='movies'>
-        {movies &&
-          movies.map((movie, index) => <Movie key={index} movie={movie} />)}
-        {movies && movies.length === 0 ? (
-          <h1> Unfortunately This Movie Doesn't Exist.😕 </h1>
-        ) : null}
+        <div className='movies'>
+          {movies &&
+            movies.map((movie, index) => <Movie key={index} movie={movie} />)}
+          {movies && movies.length === 0 ? (
+            <h1> Unfortunately This Movie Doesn't Exist.😕 </h1>
+          ) : null}
+        </div>
       </div>
     </>
   );

@@ -1,0 +1,17 @@
+.genre {
+    margin: 2em .5em;
+    text-align: center;
+    color: wheat;
+
+    h2 {
+        border-radius: .25em;
+        background-color: orange;
+        color: black;
+    }
+
+    h2:hover {
+        transform: scale(1.15);
+        box-shadow: 2px 5px black;
+    }
+
+}
