@@ -6,11 +6,16 @@ import Genre from "./Genre/Genre";
 
 function Library() {
   const inputRef = useRef();
+
   const [movies, setMovies] = useState();
   const [sortBy, setSortBy] = useState("");
+
   const [searchMovie, setSearchMovie] = useState("");
   const [movieID, setMovieID] = useState();
+
   const [genres, setGenres] = useState();
+  const [selectedGenreID, setSelectedGenreID] = useState();
+  const [selectedGenreName, setSelectedGenreName] = useState();
 
   //API ROUTES
 
@@ -21,7 +26,7 @@ function Library() {
   const GENRES_REQUEST = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
   const SEARCH_REQUEST = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchMovie}`;
   const SELECTED_MOVIE_REQUEST = `${BASE_URL}/movie/${movieID}?api_key=${API_KEY}`;
-  const SELECTED_GENRE_REQUEST = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genres}`;
+  const SELECTED_GENRE_REQUEST = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${selectedGenreID}`;
 
   async function getMovies() {
     const rawData = await fetch(REQUEST);
@@ -34,10 +39,33 @@ function Library() {
     setGenres(data.genres);
   }
 
+  async function getMoviesBySearch() {
+    if (searchMovie) {
+      const rawData = await fetch(SEARCH_REQUEST);
+      const data = await rawData.json();
+      setMovies(data.results);
+    }
+  }
+
+  async function getMoviesWithGenre() {
+    const rawData = await fetch(SELECTED_GENRE_REQUEST);
+    const data = await rawData.json();
+    setMovies(data.results);
+  }
+
   useEffect(() => {
     getMovies();
     getGenres();
   }, []);
+
+  useEffect(() => {
+    getMoviesBySearch();
+  }, [searchMovie]);
+
+  useEffect(() => {
+    getMoviesWithGenre();
+    console.log(selectedGenreID);
+  }, [selectedGenreID]);
 
   function sortFunction() {
     if (sortBy === "rating") {
@@ -56,18 +84,6 @@ function Library() {
       inputRef.current && setSearchMovie(inputRef.current.value);
     }
   });
-
-  async function getMoviesBySearch() {
-    if (searchMovie) {
-      const rawData = await fetch(SEARCH_REQUEST);
-      const data = await rawData.json();
-      setMovies(data.results);
-      console.log(movies);
-    }
-  }
-  useEffect(() => {
-    getMoviesBySearch();
-  }, [searchMovie]);
 
   return (
     <>
@@ -88,7 +104,6 @@ function Library() {
             <h1>{inputRef.current.value.toUpperCase()} </h1>
           ) : null}
         </div>
-
         <div className='selectDropdown'>
           <select
             name='sortMovies'
@@ -106,11 +121,21 @@ function Library() {
           </select>
         </div>
       </div>
+
+      <h1 id='selectedGenreName'>{selectedGenreName} </h1>
+
       <div className='genreAndMovies'>
         <div className='genre'>
           <h1>Genres</h1>
           {genres &&
-            genres.map((genre) => <Genre key={genre.id} genre={genre} />)}
+            genres.map((genre) => (
+              <Genre
+                key={genre.id}
+                genre={genre}
+                setSelectedGenreID={setSelectedGenreID}
+                setSelectedGenreName={setSelectedGenreName}
+              />
+            ))}
         </div>
 
         <div className='movies'>
