@@ -99,9 +99,11 @@ function Library() {
         </div>
 
         <div className='searchedFor'>
-          <h2> You Searched For :</h2>
-          {inputRef.current ? (
-            <h1>{inputRef.current.value.toUpperCase()} </h1>
+          {inputRef.current && inputRef.current.value ? (
+            <div>
+              <h2> You Searched For :</h2>
+              <h1>{inputRef.current.value.toUpperCase()} </h1>
+            </div>
           ) : null}
         </div>
         <div className='selectDropdown'>
