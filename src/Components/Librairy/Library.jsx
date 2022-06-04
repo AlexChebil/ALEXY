@@ -64,7 +64,6 @@ function Library() {
 
   useEffect(() => {
     getMoviesWithGenre();
-    console.log(selectedGenreID);
   }, [selectedGenreID]);
 
   function sortFunction() {
@@ -84,6 +83,8 @@ function Library() {
       inputRef.current && setSearchMovie(inputRef.current.value);
     }
   });
+
+  console.log(movies);
 
   return (
     <>

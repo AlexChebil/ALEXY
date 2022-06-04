@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Components/Header/Header";
 import Library from "./Components/Librairy/Library";
+import MoviePage from "./Components/MoviePage/MoviePage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header />
-      <Library />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Library />} />
+          <Route path='/:id' element={<MoviePage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
