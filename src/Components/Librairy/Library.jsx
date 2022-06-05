@@ -82,6 +82,8 @@ function Library() {
     }
   });
 
+  console.log(movies);
+
   return (
     <>
       <div className='flexContainer'>
