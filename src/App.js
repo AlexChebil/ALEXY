@@ -11,7 +11,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Library />} />
-          <Route path='/:id' element={<MoviePage />} />
+          <Route path='/movie/:id' element={<MoviePage />} />
         </Routes>
       </BrowserRouter>
     </>

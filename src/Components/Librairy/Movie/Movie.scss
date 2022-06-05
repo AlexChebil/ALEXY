@@ -1,49 +1,49 @@
-.movie{
+.movie {
     background-color: rgba(72, 130, 224, 0.05);
     color: wheat;
     padding: 2em;
     margin: 2em;
     border-radius: 2em;
     transition: all .25s ease-in-out;
-    
-    img{
+
+    img {
         width: 20em;
         display: block;
         margin-left: auto;
-        margin-right: auto ;
+        margin-right: auto;
         border-radius: 2em;
         border: 3px solid orange;
     }
-    
-    p{
+
+    p {
         font-size: 1.25em;
     }
 
 }
 
 
-.movieTitleVoteDate{
+.movieTitleVoteDate {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.date{
+.date {
     font-style: italic;
     font-weight: 1;
     font-size: 1.5em;
 }
 
-.vote{
+.vote {
     font-size: 2.5em;
 }
 
-#overview{
+#overview {
     text-align: center;
 }
 
-.movie:hover{
-    transition:all .25s ease-in-out;
+.movie:hover {
+    transition: all .25s ease-in-out;
     box-shadow: 0 0 5px 5px orange;
-    
+
 }

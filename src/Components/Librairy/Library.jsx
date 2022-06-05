@@ -11,7 +11,6 @@ function Library() {
   const [sortBy, setSortBy] = useState("");
 
   const [searchMovie, setSearchMovie] = useState("");
-  const [movieID, setMovieID] = useState();
 
   const [genres, setGenres] = useState();
   const [selectedGenreID, setSelectedGenreID] = useState();
@@ -25,7 +24,6 @@ function Library() {
   const REQUEST = `${BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
   const GENRES_REQUEST = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
   const SEARCH_REQUEST = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchMovie}`;
-  const SELECTED_MOVIE_REQUEST = `${BASE_URL}/movie/${movieID}?api_key=${API_KEY}`;
   const SELECTED_GENRE_REQUEST = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${selectedGenreID}`;
 
   async function getMovies() {
@@ -83,8 +81,6 @@ function Library() {
       inputRef.current && setSearchMovie(inputRef.current.value);
     }
   });
-
-  console.log(movies);
 
   return (
     <>
