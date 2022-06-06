@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CircularProgressWithLabel from "../../MUI/CircularWithLabel";
 import "./MoviePage.scss";
 
 function MoviePage() {
@@ -22,6 +23,12 @@ function MoviePage() {
     getMovie();
   }, []);
 
+  let test = 185000000;
+
+  let a = test;
+
+  console.log(a);
+
   return (
     <>
       {movie && (
@@ -39,7 +46,9 @@ function MoviePage() {
             <h1>Genres:</h1>
             <div>
               {movie.genres.map((genre) => (
-                <span key={genre.id}>{genre.name} </span>
+                <span className='pills' key={genre.id}>
+                  {genre.name}{" "}
+                </span>
               ))}
             </div>
           </div>
@@ -48,37 +57,75 @@ function MoviePage() {
             Homepage
           </a>
 
-          <h2>Original Title:{movie.original_title} </h2>
-          <h2>Overview:{movie.overview} </h2>
-          <h2>Popularity {movie.popularity} </h2>
-          <h2>Status: {movie.status} </h2>
-          <h2>Rating: {movie.vote_average}/10 </h2>
-          <h2>Rating Count: {movie.vote_count} Votes </h2>
-
-          <div>
-            <h1>Production Compagnies:</h1>
-            <div>
-              {movie.production_companies.map((companie) => (
-                <h4 key={companie.id}>{companie.name} </h4>
-              ))}
-            </div>
+          <div className='rating'>
+            <CircularProgressWithLabel
+              className='CircularProgress'
+              value={movie.vote_average * 10}
+            />
+            <span>{movie.vote_count} Votes</span>
           </div>
 
-          <div>
-            <h1>Countries:</h1>
-            <div>
-              {movie.production_countries.map((country) => (
-                <h3 key={Math.random()}>{country.name} </h3>
-              ))}
-            </div>
+          <div className='lowerFlexCont'>
+            <h2>
+              Budget :$
+              {movie.budget
+                .toString()
+                .match(/.{1,3}/g)
+                .join(",")}
+            </h2>
+
+            <h2>
+              {movie.popularity} Popularity With A {movie.runtime}-Mins Runtime{" "}
+            </h2>
+
+            <h2>
+              {movie.status} On The {movie.release_date}
+            </h2>
+
+            <h2>
+              Revenue :$
+              {movie.revenue
+                .toString()
+                .match(/.{1,3}/g)
+                .join(",")}
+            </h2>
           </div>
 
-          <div>
-            <h1>Languages:</h1>
-            <div>
-              {movie.spoken_languages.map((language) => (
-                <span key={language.iso_639_1}>{language.english_name} </span>
-              ))}
+          <h2>Original Title: " {movie.original_title} " </h2>
+          <h2>Overview: {movie.overview} </h2>
+
+          <div className='lowerFlexCont'>
+            <div className='flex'>
+              <h1>Countries</h1>
+              <div>
+                {movie.production_countries.map((country) => (
+                  <span className='pills' key={Math.random()}>
+                    {country.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className='flex'>
+              <h1>Production Compagnies</h1>
+              <div>
+                {movie.production_companies.map((companie) => (
+                  <span className='pills' key={companie.id}>
+                    {companie.name}{" "}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className='flex'>
+              <h1>Languages</h1>
+              <div>
+                {movie.spoken_languages.map((language) => (
+                  <span className='pills' key={language.iso_639_1}>
+                    {language.english_name}{" "}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
