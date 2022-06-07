@@ -7,16 +7,18 @@
     border-radius: 2em;
     padding: .25em;
     margin: .5em;
-    margin-bottom: 8em;
     font-size: 1.25em;
 }
 
-.lowerFlexCont {
+
+
+.FlexCont {
+    //multiple divs
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: 2em 0;
     text-align: center;
+    margin: 2em 0;
 
     .flex {
         border: 2px solid orange;
@@ -31,4 +33,38 @@
         padding: 1em;
 
     }
+}
+
+.description {
+    margin: 4em 2em;
+    text-align: center;
+
+
+    #overview {
+        line-height: 2em;
+        font-size: 1.5em;
+        text-align: left;
+    }
+
+    #originalTitle {
+        font-size: 4em;
+        margin: 0;
+    }
+}
+
+.imgAndGenre {
+    display: flex;
+    justify-content: space-around;
+
+    img {
+        border-radius: 2em;
+        border: 2px solid orange;
+    }
+
+}
+
+
+
+.rating {
+    font-size: 1.5em;
 }

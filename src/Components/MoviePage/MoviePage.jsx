@@ -23,49 +23,24 @@ function MoviePage() {
     getMovie();
   }, []);
 
-  let test = 185000000;
-
-  let a = test;
-
-  console.log(a);
-
   return (
     <>
       {movie && (
         <div className='movieContainer'>
-          <h1>{movie.title}</h1>
-          <h2>{movie.tagline} </h2>
-
           <img
-            id='backdropIMG'
-            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+            id='posterIMG'
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt=''
           />
+          <div className='description'>
+            <p id='originalTitle'>{movie.original_title}</p>
+            <h2>{movie.tagline} </h2>
+            <h1>As It's Original Title</h1>
 
-          <div className='genreContainer'>
-            <h1>Genres:</h1>
-            <div>
-              {movie.genres.map((genre) => (
-                <span className='pills' key={genre.id}>
-                  {genre.name}{" "}
-                </span>
-              ))}
-            </div>
+            <p id='overview'>{movie.overview}</p>
           </div>
 
-          <a href={`${movie.homepage}`} target='blank'>
-            Homepage
-          </a>
-
-          <div className='rating'>
-            <CircularProgressWithLabel
-              className='CircularProgress'
-              value={movie.vote_average * 10}
-            />
-            <span>{movie.vote_count} Votes</span>
-          </div>
-
-          <div className='lowerFlexCont'>
+          <div className='FlexCont'>
             <h2>
               Budget :$
               {movie.budget
@@ -91,10 +66,7 @@ function MoviePage() {
             </h2>
           </div>
 
-          <h2>Original Title: " {movie.original_title} " </h2>
-          <h2>Overview: {movie.overview} </h2>
-
-          <div className='lowerFlexCont'>
+          <div className='FlexCont'>
             <div className='flex'>
               <h1>Countries</h1>
               <div>
@@ -127,6 +99,37 @@ function MoviePage() {
                 ))}
               </div>
             </div>
+          </div>
+
+          <div className='imgAndGenre'>
+            <div className='genreContainer'>
+              <h1>Genres</h1>
+
+              <div>
+                {movie.genres.map((genre) => (
+                  <span className='pills' key={genre.id}>
+                    {genre.name}
+                  </span>
+                ))}
+              </div>
+
+              <a href={`${movie.homepage}`} target='blank'>
+                Homepage
+              </a>
+
+              <div className='rating'>
+                <CircularProgressWithLabel
+                  className='CircularProgress'
+                  value={movie.vote_average * 10}
+                />
+                <span>{movie.vote_count} Votes</span>
+              </div>
+            </div>
+
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+              alt=''
+            />
           </div>
         </div>
       )}
