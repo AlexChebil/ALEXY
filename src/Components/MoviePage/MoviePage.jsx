@@ -16,7 +16,6 @@ function MoviePage() {
     const rawData = await fetch(SELECTED_MOVIE_REQUEST);
     const data = await rawData.json();
     setMovie(data);
-    console.log(movie);
   }
 
   useEffect(() => {
