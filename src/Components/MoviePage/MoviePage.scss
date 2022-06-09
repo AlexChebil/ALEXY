@@ -2,6 +2,12 @@
     color: wheat;
 }
 
+#homepage {
+    text-decoration: none;
+    color: orange;
+    margin: 2em 0 !important;
+}
+
 .pills {
     background-color: orange;
     border-radius: 2em;
@@ -17,6 +23,9 @@
     z-index: -1;
     opacity: .2;
     margin-bottom: -17em;
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
 
 }
 
@@ -40,14 +49,29 @@
         border: 2px solid orange;
         border-radius: 2em;
         padding: 1em;
-
     }
 }
 
 .description {
-    margin: 4em 2em;
+    margin: 3em 2em;
     text-align: center;
+    transform: translateY(-30vh);
 
+    .originalTitle {
+        font-size: 8em;
+        margin: 0;
+    }
+
+    /* Changing the font size of the original title. */
+
+    .largeTitle {
+        margin-top: 1.25em;
+        font-size: 5em !important;
+    }
+}
+
+.overviewAndOrigianlTitle {
+    margin: 3em 2em;
 
     #overview {
         line-height: 2em;
@@ -55,11 +79,33 @@
         text-align: left;
     }
 
-    #originalTitle {
-        font-size: 4em;
-        margin: 0;
+    h1 {
+        text-align: center;
+        border: 2px solid orange;
+        border-radius: 2em;
+        padding: .5em;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .imgAndGenre {
     display: flex;

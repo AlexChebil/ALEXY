@@ -32,24 +32,38 @@ function MoviePage() {
             alt=''
           />
           <div className='description'>
-            <p id='originalTitle'>{movie.original_title}</p>
+            <h1
+              className={`originalTitle ${
+                movie.original_title.length >= 20 ? "largeTitle" : null
+              }`}
+            >
+              {movie.original_title}
+            </h1>
             <h2>{movie.tagline} </h2>
-            <h1>As It's Original Title</h1>
+          </div>
 
+          <div className='overviewAndOrigianlTitle'>
             <p id='overview'>{movie.overview}</p>
+            <h1>Original Title : {movie.original_title}</h1>
           </div>
 
           <div className='FlexCont'>
             <h2>
               Budget :$
               {movie.budget
-                .toString()
-                .match(/.{1,3}/g)
-                .join(",")}
+                ? movie.budget
+                    .toString()
+                    .match(/.{1,3}/g)
+                    .join(",")
+                : "Not Available"}
             </h2>
 
             <h2>
-              {movie.popularity} Popularity With A {movie.runtime}-Mins Runtime{" "}
+              {movie.popularity} Popularity With A {movie.runtime}-Mins Runtime
+            </h2>
+
+            <h2>
+              {movie.vote_average}⭐ On {movie.vote_count} Votes
             </h2>
 
             <h2>
@@ -59,9 +73,11 @@ function MoviePage() {
             <h2>
               Revenue :$
               {movie.revenue
-                .toString()
-                .match(/.{1,3}/g)
-                .join(",")}
+                ? movie.revenue
+                    .toString()
+                    .match(/.{1,3}/g)
+                    .join(",")
+                : "Not Available"}
             </h2>
           </div>
 
@@ -113,16 +129,8 @@ function MoviePage() {
               </div>
 
               <a id='homepage' href={`${movie.homepage}`} target='blank'>
-                Homepage
+                {movie.title}'s Homepage ⭷
               </a>
-
-              <div className='rating'>
-                <CircularProgressWithLabel
-                  className='CircularProgress'
-                  value={movie.vote_average * 10}
-                />
-                <span>{movie.vote_count} Votes</span>
-              </div>
             </div>
 
             <img

@@ -5,7 +5,8 @@ import "./Movie.scss";
 function Movie({ movie }) {
   /* Taking the release date and splitting it into an array, then slicing the array to only show the
 first 4 characters, then joining the array back into a string. */
-  const date = movie.release_date.split("").slice(0, 4).join("");
+  const date =
+    movie.release_date && movie.release_date.split("").slice(0, 4).join("");
   return (
     <>
       <Link style={{ textDecoration: "none" }} to={`/movie/${movie.id}`}>
