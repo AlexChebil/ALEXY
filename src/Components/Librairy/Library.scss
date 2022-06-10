@@ -18,6 +18,7 @@
     h2 {
         color: wheat;
     }
+
 }
 
 
@@ -50,12 +51,15 @@
 
     .search {
         margin: 1em;
+
     }
 
     #outlined-basic {
-        background-color: rgba(240, 248, 255, 0.05);
+        background-color: rgba(240, 248, 255, 0.25);
         border-radius: .25em;
         color: #ffa726;
+        width: 20em;
+        min-width: 2em;
     }
 }
 
