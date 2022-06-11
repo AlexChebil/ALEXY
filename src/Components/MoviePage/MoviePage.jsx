@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CircularProgressWithLabel from "../../MUI/CircularWithLabel";
+import "./MoviePageMediaQ.scss";
 import "./MoviePage.scss";
 
 function MoviePage() {

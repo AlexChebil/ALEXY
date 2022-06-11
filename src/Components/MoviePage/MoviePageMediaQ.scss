@@ -1,4 +1,30 @@
 @media all and (min-width:300px) and (max-width:500px) {
-    .main {}
+    .movieContainer {
+        .description .originalTitle {
+            font-size: 4em;
+        }
 
+        .description .largeTitle {
+            font-size: 3.5em !important;
+
+        }
+
+        .FlexCont {
+            flex-direction: column;
+
+            .flex {
+                margin: 1em;
+            }
+        }
+
+        .pills {
+            display: flex;
+            text-align: center;
+        }
+
+        .imgAndGenre {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
 }

@@ -39,8 +39,7 @@ function Footer() {
           </a>
         </div>
         <h4>
-          © 2022 SKANDER CHEBIL - All Rights Reserved -
-          skanderchebil1@gmail.com.
+          © 2022 SKANDER CHEBIL - All Rights Reserved - skanderchebil1@gmail.com
         </h4>
       </div>
     </>
