@@ -3,7 +3,7 @@ import "./Footer.scss";
 function Footer() {
   return (
     <>
-      <div className='footer'>
+      <div className='footer '>
         <div className='FlexCont footerFlex'>
           <a
             href='https://www.linkedin.com/in/skander-chebil-578457230/'

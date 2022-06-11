@@ -24,6 +24,9 @@ function MoviePage() {
 
   return (
     <>
+      {movie ? null : (
+        <h1 className='fetching'>GATHERING DATA PLEASE WAIT..😊</h1>
+      )}
       {movie && (
         <div className='movieContainer'>
           <img

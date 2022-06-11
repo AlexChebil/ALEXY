@@ -84,7 +84,7 @@ function Library() {
 
   return (
     <>
-      <div className='flexContainer'>
+      <div className='flexContainer '>
         <div className='search'>
           <TextField
             inputRef={inputRef}
@@ -124,7 +124,10 @@ function Library() {
       <h1 id='selectedGenreName'>{selectedGenreName} </h1>
 
       <div className='genreAndMovies'>
-        <div className='genre'>
+        {genres || movies ? null : (
+          <h1 className='fetching'>GATHERING DATA PLEASE WAIT..😊</h1>
+        )}
+        <div className='genre blur-in-expand-genre'>
           <h1>Genres</h1>
           {genres &&
             genres.map((genre) => (

@@ -9,6 +9,11 @@
     }
 }
 
+.fetching {
+    text-align: center;
+    font-size: 5em;
+}
+
 .searchedFor {
     h1 {
         text-align: center;
@@ -72,4 +77,23 @@
     margin-left: 7em;
     margin-bottom: -.5em;
 
+}
+
+
+.blur-in-expand-genre {
+    animation: blur-in-expand-genre 1.25s ease-in-out both
+}
+
+@keyframes blur-in-expand-genre {
+    0% {
+        transform: scale(0);
+        filter: blur(100px);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        filter: blur(0);
+        opacity: 1
+    }
 }

@@ -10,7 +10,7 @@ first 4 characters, then joining the array back into a string. */
   return (
     <>
       <Link style={{ textDecoration: "none" }} to={`/movie/${movie.id}`}>
-        <div className='movie'>
+        <div className='movie blur-in-expand'>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt=''
