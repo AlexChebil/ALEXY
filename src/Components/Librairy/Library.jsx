@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Movie from "./Movie/Movie";
-import "./Library.scss";
 import TextField from "@mui/material/TextField";
 import Genre from "./Genre/Genre";
+import "./Library.scss";
+import "./LibraryMediaQ.scss";
 
 function Library() {
   const inputRef = useRef();

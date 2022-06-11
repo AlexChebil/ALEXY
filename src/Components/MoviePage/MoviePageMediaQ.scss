@@ -1,5 +1,10 @@
 @media all and (min-width:300px) and (max-width:500px) {
     .movieContainer {
+
+        .description {
+            margin: 4em 2em;
+        }
+
         .description .originalTitle {
             font-size: 4em;
         }

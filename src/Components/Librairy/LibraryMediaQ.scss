@@ -1,0 +1,9 @@
+@media all and (min-width:300px) and (max-width:500px) {
+    .flexContainer {
+        flex-direction: column;
+    }
+
+    .genreAndMovies {
+        flex-direction: column;
+    }
+}
