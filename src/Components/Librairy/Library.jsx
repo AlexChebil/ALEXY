@@ -126,7 +126,7 @@ function Library() {
 
       <div className='genreAndMovies'>
         {genres || movies ? null : (
-          <h1 className='fetching'>GATHERING DATA PLEASE WAIT..😊</h1>
+          <h1 className='fetching'>Fetching Data Please Wait...😊</h1>
         )}
         <div className='genre blur-in-expand-genre'>
           <h1>Genres</h1>
