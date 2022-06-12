@@ -1,9 +1,17 @@
-@media all and (min-width:300px) and (max-width:500px) {
+@media all and (min-width:300px) and (max-width:650px) {
     .flexContainer {
         flex-direction: column;
     }
 
     .genreAndMovies {
         flex-direction: column;
+    }
+
+    .movies {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    .movie img {
+        width: 70vw;
     }
 }
