@@ -9,5 +9,12 @@
     h1 {
         cursor: pointer;
         font-size: 3.5em;
+        margin: .25em 0;
+        padding: 0 .25em;
+    }
+
+    h1:hover {
+        background-color: rgba(128, 128, 128, 0.2);
+        border-radius: 2em;
     }
 }
