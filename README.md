@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+LIVE DEMO => https://alexy.pages.dev/
+
+Hosted By CloudFlare
+
 ## Available Scripts
 
 In the project directory, you can run:
